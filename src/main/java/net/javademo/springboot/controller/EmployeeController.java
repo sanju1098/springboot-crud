@@ -63,7 +63,7 @@ public class EmployeeController {
     @GetMapping("{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable long id){
         Employee employee =  employeeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee"+ id +"Not found in Records"));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee "+ id +" Not found in Records"));
 
         System.out.println(employee);
         return ResponseEntity.ok(employee);
@@ -73,7 +73,7 @@ public class EmployeeController {
     @PutMapping("{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable long id, @RequestBody Employee employeeDetails){
         Employee updateEmployee =  employeeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee"+ id +"Not found in Records"));
+                .orElseThrow(() -> new ResourceNotFoundException("Failed in Updating the data"));
 
         updateEmployee.setFirstName(employeeDetails.getFirstName());
         updateEmployee.setLastName(employeeDetails.getLastName());
@@ -89,7 +89,7 @@ public class EmployeeController {
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable long id){
         Employee employee =  employeeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee"+ id +"Not found in Records"));
+                .orElseThrow(() -> new ResourceNotFoundException("Failed in Deleting the record"));
 
         employeeRepository.delete(employee);
 
