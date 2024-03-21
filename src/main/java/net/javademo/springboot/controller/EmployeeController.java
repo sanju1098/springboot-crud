@@ -19,6 +19,8 @@ import java.util.regex.Pattern;
 @RestController // once we add this annotation then this class becomes Spring MVC Controller
 // capable to handle http request
 
+@CrossOrigin //to resolve cors issue in UI and other approach is CORSConfig
+
 @RequestMapping("/api/v1/employees") // common base URL
 public class EmployeeController {
 
